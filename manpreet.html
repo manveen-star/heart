@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hearts for You ❤️</title>
+<style>
+  body {
+    background: #fff;
+    overflow: hidden;
+    font-family: sans-serif;
+    text-align: center;
+    padding-top: 50px;
+  }
+  button {
+    font-size: 20px;
+    padding: 15px 30px;
+    cursor: pointer;
+    background: pink;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  }
+  .heart {
+    position: absolute;
+    color: red;
+    font-size: 24px;
+    animation: floatUp 2s linear forwards;
+    pointer-events: none;
+  }
+  @keyframes floatUp {
+    0% { transform: translateY(0) scale(1); opacity: 1; }
+    100% { transform: translateY(-400px) scale(1.5); opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<h1>I got tired of coding so I made this for you</h1>
+<button onclick="createHeart()">Click here</button>
+
+<script>
+function createHeart() {
+  const heart = document.createElement('div');
+  heart.className = 'heart';
+  heart.innerText = '❤️';
+  
+  // Random position
+  heart.style.left = Math.random() * window.innerWidth + 'px';
+  heart.style.top = window.innerHeight - 50 + 'px';
+  
+  document.body.appendChild(heart);
+  
+  // Remove heart after animation
+  setTimeout(() => {
+    heart.remove();
+  }, 2000);
+  
+  // Create multiple hearts for fun
+  for (let i = 0; i < 5; i++) {
+    setTimeout(createHeart, 200 * i);
+  }
+}
+</script>
+
+</body>
+</html>
